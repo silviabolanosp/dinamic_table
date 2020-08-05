@@ -1,38 +1,31 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="styles/styles.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <title>Dynamnic table</title>
     </head>
 <body>
     <div>
-    <h1>Intento 1</h1>
-    <table>
-       <tr>
-           <th>id</th>
-           <th>name</th>
-           <th>age</th>
-       </tr> 
-       <tr>
-           <td>1</td>
-           <td>Daniel</td>
-           <td>25</td>
-       </tr>
-    </table>
-</div>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">WebSiteName</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="index.html">Home</a></li>
+                    <li><a href="tablasEstaticas.html">Tablas estaticas</a></li>
+                    <li><a href="tablasSort.html">tablas sort</a></li>
+                    <li><a href="#">Page 3</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
 
-<div>
-    <h1>intento 2</h1>
-    <h2 id="demo"></h2>
-    <input type="button" value="Generate table" onclick="generateTable()"/>
-    <hr/>
-    <div id="dvTable"></div>
-</div>
-
-<script>
-    document.getElementById("demo").innerHTML = "Hello world!!!";
-</script>
-<script src="js/myScript.js"></script>
 </body>
 
 </html>
