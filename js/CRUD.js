@@ -41,19 +41,7 @@ function generateTable(type){
                 var cell = row.insertCell(-1);
                 cell.innerHTML = customers[i][j];
             }
-        var cell = row.insertCell(-1);
-        var buttonAdd = document.createElement("BUTTON");
-        buttonAdd.id = "add";
-        buttonAdd.className = "addButton";
-        buttonAdd.innerHTML = "add";
-        buttonAdd.setAttribute("onclick","add()");
-        cell.appendChild(buttonAdd);  
-        var buttonDelete = document.createElement("BUTTON");
-        buttonDelete.id = "delete";
-        buttonDelete.className = "deleteButton";
-        buttonDelete.innerHTML = "delete";
-        buttonDelete.setAttribute("onclick",'deleteRow(this)');
-        cell.appendChild(buttonDelete); 
+            addButtons(row);
         }
 
         
@@ -126,33 +114,70 @@ function generateTable(type){
       }
 function add(){
             //Add the data rows.
-            var table = document.getElementById("myTable");
-            var i;
+            if(validateForm()){
+                var table = document.getElementById("myTable");
 
                 row = table.insertRow(-1);
-                for (var j = 0; j < 4; j++) {
-                    var cell = row.insertCell(-1);
-                    cell.innerHTML = j;
-                }
-            var cell = row.insertCell(-1);
-            var buttonAdd = document.createElement("BUTTON");
-            buttonAdd.id = "add";
-            buttonAdd.className = "addButton";
-            buttonAdd.innerHTML = "add";
-            buttonAdd.setAttribute("onclick","add()");
-            cell.appendChild(buttonAdd);  
-            var buttonDelete = document.createElement("BUTTON");
-            buttonDelete.id = "delete";
-            buttonDelete.className = "deleteButton";
-            buttonDelete.innerHTML = "delete";
-            buttonDelete.setAttribute("onclick",'deleteRow(this)');
-            cell.appendChild(buttonDelete); 
+                var cell = row.insertCell(-1);
+                cell.innerHTML = document.forms["myForm"]["fid"].value;
+                var cell = row.insertCell(-1);
+                cell.innerHTML = document.forms["myForm"]["fage"].value;
+                var cell = row.insertCell(-1);
+                cell.innerHTML = document.forms["myForm"]["fname"].value;
+                var cell = row.insertCell(-1);
+                cell.innerHTML = document.forms["myForm"]["fcountry"].value;
+                
+                addButtons(row); 
+            }
+
             
 }
+
+function validateForm() {
+    var w = document.forms["myForm"]["fid"].value;
+    var x = document.forms["myForm"]["fage"].value;
+    var y = document.forms["myForm"]["fname"].value;
+    var z = document.forms["myForm"]["fcountry"].value;
+
+    if (w == "" || x == "" ||y == "" ||z == "") {
+      alert("Todos los campos deben llenarse");
+      return false;
+    }else{
+        return true;
+    }
+  }
 
 function deleteRow(param){
     var i = param.parentNode.parentNode.rowIndex;
     var table = document.getElementById("myTable");
     table.deleteRow(i);
     
+}
+
+function addButtons(row){
+
+    var cell = row.insertCell(-1);
+    var buttonEdit = document.createElement("BUTTON");
+    buttonEdit.className = "editButton";
+    buttonEdit.innerHTML = "Edit";
+    buttonEdit.setAttribute("onclick","edit(this)");
+    cell.appendChild(buttonEdit);  
+    var buttonDelete = document.createElement("BUTTON");
+    buttonDelete.className = "deleteButton";
+    buttonDelete.innerHTML = "delete";
+    buttonDelete.setAttribute("onclick",'deleteRow(this)');
+    cell.appendChild(buttonDelete); 
+}
+
+function edit(){
+    var modal = document.getElementById("myModal");
+    var span = document.getElementsByClassName("close")[0];
+
+    modal.style.display = "block";
+        
+
+    span.onclick = function(){
+        modal.style.display = "none";
+    }
+
 }
